@@ -17,6 +17,7 @@ function inputcheck(){
       url:"controller.php",
       data:{username:$("#login-username").val(),password:$("#login-password").val()},
       success:function( data ){
+        console.log( data );
         try{
           j_data = JSON.parse( data );
           if( j_data["status"] == "ok" ){
@@ -31,7 +32,8 @@ function inputcheck(){
           $("#btn-login").removeAttr("disabled");
         }
       },
-      error:function(){
+      error:function(e){
+        console.log(e);
         make_alert( "Server Error status 2" , $(".panel-body") , true);
         $("#btn-login").removeAttr("disabled");
       }

@@ -22,7 +22,7 @@
     <title>System of CardReader</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/stylesheet/sweetalert.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/stylesheet/iziToast.min.css">
     <link rel="shortcut icon" href="key.png">
@@ -276,12 +276,12 @@
     </div>
   </div> -->
   <!-- ConfirmModalEnd -->
-  <script src="bootstrap/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/jquery.min.js"></script>
   <!-- Plugin JavaScript -->
   <script src="assets/scripts/jquery.easing.min.js"></script>
 
   <!-- Bootstrap Core JavaScript -->
-  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/scripts/jquery.formatter.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay_progress.min.js"></script>

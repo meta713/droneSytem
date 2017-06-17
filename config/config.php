@@ -14,6 +14,8 @@ ini_set( "display_errors" , 1 ); error_reporting(E_ALL); // エラーを表示�
 //***************************
 //Rootディレクトリ関連
 //***************************
+//baseとなるトップディレクトリ
+define( "_BASE_DIRECTORY" , "/" );
 //アプリケーションのroot
 define( "_ROOT_DIR" , "/Users/hayashimizuki/www/card_system/" );
 //設定ファイル格納用のディレクトリ
@@ -51,7 +53,7 @@ define( "_SERVICE_NAME" , "card_system" );
 //************************************
 //ローカルデータベース用の変数
 //************************************
-define( "_DB_HOST" , "localhost" );
+define( "_DB_HOST" , "127.0.0.1" );
 define( "_DB_USER" , "root" );
 define( "_DB_PASS" , "doyadoya4141" );
 define( "_DB_NAME" , "design_studio" );
@@ -59,10 +61,9 @@ define( "_DB_NAME" , "design_studio" );
 //************************************
 //外部データベース用の変数
 //************************************
-define( "_OUT_DB_HOST" , "localhost" );
-define( "_OUT_DB_USER" , "root" );
-define( "_OUT_DB_PASS" , "doyadoya4141" );
+define( "_OUT_DB_HOST" , "10.0.1.51" );
+define( "_OUT_DB_USER" , "design" );
+define( "_OUT_DB_PASS" , "ds_master" );
 define( "_OUT_DB_NAME" , "design_studio" );
-
 
 ?>
