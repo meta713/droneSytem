@@ -16,11 +16,11 @@
   <body>
     {block name="template_body"}
     {/block}
-    {block name="template_script"}
-    {/block}
     <!-- 共通部分　開始 -->
     <script src="{$smarty.const._BASE_DIRECTORY}assets/bootstrap/js/jquery.min.js"></script>
     <script src="{$smarty.const._BASE_DIRECTORY}assets/bootstrap/js/bootstrap.min.js"></script>
     <!-- 共通部分　終了 -->
+    {block name="template_script"}
+    {/block}
   </body>
 </html>

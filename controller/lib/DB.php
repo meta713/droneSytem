@@ -14,7 +14,7 @@ function db_connect(){
    $pdo->setAttribute(pdo::ATTR_ERRMODE, pdo::ERRMODE_EXCEPTION);
    $pdo->setAttribute(pdo::ATTR_EMULATE_PREPARES, false);
    return $pdo;
-   
+
 }
 
 

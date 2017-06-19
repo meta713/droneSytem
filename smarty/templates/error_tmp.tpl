@@ -2,7 +2,7 @@
 {block name="template_styles"}
 {/block}
 {block name="template_title"}
-db_error
+error
 {/block}
 {block name="template_script"}
 {/block}

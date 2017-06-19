@@ -37,8 +37,7 @@ $(function(){
 })
 
 function connect_socket_use(){
-  var page_info = getUrlVars(location.search);
-  if( page_info["page"] == "use" ){
+  if( page_info == "use" ){
     iziToast.info({
       class: 'toast',
       id : "info_toast",
@@ -54,16 +53,16 @@ function connect_socket_use(){
       if(socket){
 
          socket.onopen = function(){
-           console.log(JSON.stringify(getUrlVars(location.search)));
+          //  console.log(JSON.stringify(getUrlVars(location.search)));
            ///getUrlVars(location.search)
            //JSON.stringify()
-           socket.send(JSON.stringify(page_info));
+           socket.send(JSON.stringify({"page":page_info}));
            //socket.send("this is test");
          }
 
          socket.onmessage = function(msg){
            //showServerResponse(msg.data);
-           console.log(msg);
+          //  console.log(msg);
            setTimeout(function(){
              //$("#alert_connecting").hide("slow");
              try {
@@ -96,9 +95,9 @@ function connect_socket_use(){
                    },
                    function(isConfirm){
                      if (isConfirm) {
-                       window.location.href = "?page=regist";
+                       window.location.href = "/base/regist";
                      } else {
-                       window.location.href = "?page=home";
+                       window.location.href = "/base/top";
                      }
                    });
 
@@ -124,7 +123,7 @@ function connect_socket_use(){
                   //  } , 2000 );
                    $.ajax({
                      type : "POST",
-                     url : "data.php",
+                     url : "/base/regist_data",
                      data : { data : user_data.createjson() },
                      success : function( res ){
                        console.log(res);
@@ -144,7 +143,7 @@ function connect_socket_use(){
                            },
                            function(isConfirm){
                              if (isConfirm) {
-                               window.location.href = "?page=home";
+                               window.location.href = "/base/top";
                              } else {
                                $("[btn]").find("a").removeAttr("disabled");
                                iziToast.destroy();

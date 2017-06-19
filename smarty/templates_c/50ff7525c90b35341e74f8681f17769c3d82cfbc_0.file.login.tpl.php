@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-06-17 02:38:30
+/* Smarty version 3.1.30, created on 2017-06-19 19:13:37
   from "/Users/hayashimizuki/www/card_system/smarty/templates/login.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_59441796e49c23_99985479',
+  'unifunc' => 'content_5947a3d1548341_83578422',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '50ff7525c90b35341e74f8681f17769c3d82cfbc' => 
     array (
       0 => '/Users/hayashimizuki/www/card_system/smarty/templates/login.tpl',
-      1 => 1497634709,
+      1 => 1497866085,
       2 => 'file',
     ),
   ),
@@ -21,32 +21,32 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templa.tpl' => 1,
   ),
 ),false)) {
-function content_59441796e49c23_99985479 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5947a3d1548341_83578422 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_74221956059441796e3c412_49569103', "template_styles");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10507712245947a3d153c193_15640898', "template_styles");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_180878782959441796e3e788_84361476', "template_title");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20734243715947a3d153e5f5_55480455', "template_title");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_152617881959441796e43750_91129518', "template_body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_11422130195947a3d1542461_29335436', "template_body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_33049029359441796e48e23_45479548', "template_script");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_9901436915947a3d15476a7_75718385', "template_script");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild();
 $_smarty_tpl->_subTemplateRender("file:templa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 2, false);
 }
 /* {block "template_styles"} */
-class Block_74221956059441796e3c412_49569103 extends Smarty_Internal_Block
+class Block_10507712245947a3d153c193_15640898 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -59,7 +59,7 @@ assets/lib/bootstrap/css/bootstrap-theme.css" />
 }
 /* {/block "template_styles"} */
 /* {block "template_title"} */
-class Block_180878782959441796e3e788_84361476 extends Smarty_Internal_Block
+class Block_20734243715947a3d153e5f5_55480455 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -70,7 +70,7 @@ login
 }
 /* {/block "template_title"} */
 /* {block "template_body"} */
-class Block_152617881959441796e43750_91129518 extends Smarty_Internal_Block
+class Block_11422130195947a3d1542461_29335436 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -79,8 +79,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
   <div id="loginbox" style="margin-top:100px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
    <div class="panel panel-info">
      <div class="panel-heading">
-       <div class="panel-title">action:<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
-</div>
+       <div class="panel-title">Card Reader System</div>
        </div>
        <div style="padding-top:30px" class="panel-body" >
          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
@@ -110,7 +109,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block "template_body"} */
 /* {block "template_script"} */
-class Block_33049029359441796e48e23_45479548 extends Smarty_Internal_Block
+class Block_9901436915947a3d15476a7_75718385 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>

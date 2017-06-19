@@ -14,7 +14,7 @@ function inputcheck(){
     $("#btn-login").attr("disabled","");
     $.ajax({
       type:"POST",
-      url:"controller.php",
+      url:"/base/login",
       data:{username:$("#login-username").val(),password:$("#login-password").val()},
       success:function( data ){
         console.log( data );

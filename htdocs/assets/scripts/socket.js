@@ -29,14 +29,14 @@ $(function(){
       color : "rgba(255,255,255,1)"
     });
     $(".regist_form").LoadingOverlay("show", {
-      image       : "Preloader_1.gif"
+      image       : img_path
     });
     $(".side_menu").animate({
       left : "-22%"
     });
     $.ajax({
       type : "POST",
-      url : "data.php",
+      url : "/base/regist_data",
       data : { data : user_data.createjson() },
       success : function( res ){
         console.log("success");
@@ -54,7 +54,7 @@ $(function(){
             type:"success"
           },
           function(dismiss){
-            window.location.href = "?page=home";
+            window.location.href = "/base/top";
             //console.log("this is test");
           }
           );
@@ -75,8 +75,8 @@ $(function(){
   $("#phone_number").formatter({
     'pattern': '{{999}}{{9999}}{{9999}}'
   });
-  var page_info = getUrlVars(location.search);
-  if( page_info["page"] == "regist" || page_info["page"] == "change" ){
+  // var page_info = getUrlVars(location.search);
+  if( page_info == "regist" || page_info == "change" ){
     //$("#alert_connecting").slideToggle("normal");
     iziToast.info({
       id : "info_toast",
@@ -92,10 +92,10 @@ $(function(){
       if(socket){
 
          socket.onopen = function(){
-           console.log(JSON.stringify(getUrlVars(location.search)));
+           //console.log(JSON.stringify(getUrlVars(location.search)));
            ///getUrlVars(location.search)
            //JSON.stringify()
-           socket.send(JSON.stringify(getUrlVars(location.search)));
+           socket.send(JSON.stringify({"page":page_info}));
            //socket.send("this is test");
          }
 
@@ -132,9 +132,9 @@ $(function(){
                      },
                      function(isConfirm){
                        if (isConfirm) {
-                         window.location.href = "?page=home";
+                         window.location.href = "/base/top";
                        } else {
-                         window.location.href = "?page=home";
+                         window.location.href = "/base/top";
                        }
                      });
                    }else{
@@ -152,9 +152,9 @@ $(function(){
                      },
                      function(isConfirm){
                        if (isConfirm) {
-                         window.location.href = "?page=regist";
+                         window.location.href = "/base/regist";
                        } else {
-                         window.location.href = "?page=home";
+                         window.location.href = "/base/top";
                        }
                      });
                    }
@@ -278,6 +278,7 @@ $(function(){
 })
 
 function chk_form(){
+  console.log("this is test");
   var array = [];
   if(!$("#user_name").val()) array.push("氏名を入力してください");
   if(!$("#student_number").val()) array.push("学籍番号を入力してください");
