@@ -98,6 +98,7 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
     //ユーザのデータを登録（データの内訳は内部のapiにて処理
     case "regist_data":{
 
+      //api化する
       $check	= $_SERVER['HTTP_X_REQUESTED_WITH'];
       $res_data = $_POST["data"];
 
