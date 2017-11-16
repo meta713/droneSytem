@@ -56,7 +56,7 @@ define( "_SERVICE_NAME" , "card_system" );
 define( "_DB_HOST" , "127.0.0.1" );
 define( "_DB_USER" , "root" );
 define( "_DB_PASS" , "doyadoya4141" );
-define( "_DB_NAME" , "design_studio" );
+define( "_DB_NAME" , "sampledb" );
 
 //************************************
 //外部データベース用の変数

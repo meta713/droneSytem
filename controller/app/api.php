@@ -68,6 +68,67 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
       break;
     }
 
+    //react用のコメント追加
+    case "comments": {
+
+      $sql = "select * from comments";
+      try {
+          $stmh = $_conn->prepare( $sql );
+          $stmh->execute();
+      } catch (Exception $ex) {
+          $send_data["status"] = "error1";
+          $send_data["error"] = $ex;
+          print( json_encode( $res_data ) );
+          exit;
+      }
+      $comments = $stmh->fetchAll();
+
+      if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $comments[] = [
+            'id'      => $_POST['id'],
+            'author'  => $_POST['author'],
+            'text'    => $_POST['text']
+        ];
+        $sql = "insert into comments (author, text) values(:author,:text)";
+        try {
+            $stmh = $_conn->prepare( $sql );
+            $stmh->bindValue(":author", $_POST["author"], PDO::PARAM_STR);
+            $stmh->bindValue(":text", $_POST["text"], PDO::PARAM_STR);
+            $stmh->execute();
+            $stmh->commit();
+        } catch (Exception $ex) {
+            $send_data["status"] = "error1";
+            $send_data["error"] = $ex;
+            print( json_encode( $res_data ) );
+            exit;
+        }
+      }
+
+      header('Content-Type: application/json');
+      //header('Cache-Control: no-cache');
+      header('Access-Control-Allow-Origin: *');
+      echo json_encode($comments);
+
+      exit_app();
+      break;
+    }
+
+    case "comment": {
+      $sql = "select * from comments";
+      try {
+          $stmh = $_conn->prepare( $sql );
+          $stmh->execute();
+      } catch (Exception $ex) {
+          $send_data["status"] = "error1";
+          $send_data["error"] = $ex;
+          print( json_encode( $res_data ) );
+          exit;
+      }
+      print json_encode($stmh->fetchAll());
+      exit_app();
+      break;
+    }
+
     //エラー:該当なし
     default:
       exit_with404_api();
