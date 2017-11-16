@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
 	rcs620sObj = rcs620s.Rcs620s()
 
-	ret = rcs620sObj.initDevice()
+	ret = rcs620sObj.initDevice(SERIAL_PORT_NAME)
 
 	if (ret!="") :
 		# 初期化失敗→エラーを吐いて終了

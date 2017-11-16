@@ -40,7 +40,7 @@ function parseURI(){
   $ret = preg_match("/^\/(\w+)(\/)?(\w+)?(\/)?/i", $request_uri, $item);
   //正規表現時のエラーを確認
   if( $ret === FALSE ){
-    exit_with404();
+    exit_with404_api();
   }
 
   //取得文字列の調整部分
@@ -104,8 +104,7 @@ function initFramework( &$_conn , &$_smarty , &$_global ){
   try{
     $_conn = db_connect();
   }catch (PDOException $ex){
-    $_smarty->assign( "EX" , $ex );
-    exit_withDB();
+    exit_withDB_api($ex);
   }
 }
 
@@ -115,7 +114,7 @@ function initFramework( &$_conn , &$_smarty , &$_global ){
 function processSwitch( &$_conn , &$_smarty , &$_global ){
 
   //ptypeとactionを確認する
-  $ptype = isset( $_REQUEST["ptype"] ) ? $_REQUEST["ptype"] : "base" ;
+  $ptype = isset( $_REQUEST["ptype"] ) ? $_REQUEST["ptype"] : "api" ;
   $action = isset( $_REQUEST["action"] ) ? $_REQUEST["action"] : "" ;
   $ua = $_global["UA"];
 
@@ -124,7 +123,7 @@ function processSwitch( &$_conn , &$_smarty , &$_global ){
 
   if ( strlen( $ptype ) <= 0 ){
     //ptypeの指定なし
-    exit_with404();
+    exit_with404_api();
   }
 
   //実行phpのファイルパス app の部分は今後別途に定数化の予定
@@ -141,7 +140,7 @@ function processSwitch( &$_conn , &$_smarty , &$_global ){
   }
 
   //該当ファイルなし、エラー出力
-  exit_with404();
+  exit_with404_api();
 
 }
 

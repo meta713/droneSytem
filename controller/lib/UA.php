@@ -54,7 +54,7 @@ function check_UAtype( $type , $arraylist ){
   //中身の確認
   if( !in_array( $res[$type] , $arraylist ) ){
     //アクセスを許可していないデバイスならエラーを出力
-    exit_with404();
+    exit_with404_api();
   }
 }
 
