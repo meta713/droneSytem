@@ -68,7 +68,7 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
       break;
     }
 
-    //react用のコメント追加
+    //react用のコメント追加および表示
     case "comments": {
 
       $sql = "select * from comments";
@@ -124,7 +124,27 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
           print( json_encode( $res_data ) );
           exit;
       }
-      print json_encode($stmh->fetchAll());
+      print("<pre>");
+      print_r($stmh->fetchAll());
+      print("</pre>");
+      exit_app();
+      break;
+    }
+
+    case "sql_comment": {
+      $sql = "show full columns from comments";
+      try {
+          $stmh = $_conn->prepare( $sql );
+          $stmh->execute();
+      } catch (Exception $ex) {
+          $send_data["status"] = "error1";
+          $send_data["error"] = $ex;
+          print( json_encode( $send_data ) );
+          exit;
+      }
+      print("<pre>");
+      print_r($stmh->fetchAll());
+      print("</pre>");
       exit_app();
       break;
     }
