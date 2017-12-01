@@ -15,9 +15,21 @@ function status_200($content=array()){
   return array("status"=>200, "content"=>$content);
 }
 
-//logout status
-function status_204(){
-  return array("status"=>204);
+// //api login success status
+// function status_202($content=array()){
+//   return array("status"=>202, "content"=>$content);
+// }
+
+//logout status or login status
+function status_204($content=array()){
+  return array("status"=>204, "content"=>$content);
 }
 
+function _Json_response($array=array()){
+  return json_encode($array);
+}
+
+function _disp_APIresponse($array){
+  print(_Json_response($array));
+}
 ?>

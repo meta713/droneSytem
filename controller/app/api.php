@@ -5,8 +5,7 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
 
   // action 指定なしのとき
   if( empty( $action ) ) {
-    //$action = "top";
-    exit_with404_api();
+    exit_withJson_api(status_404(array("log"=>"Not Found.")));
   }
   //ログイン状態の確認
   //$action = ( check_login() ? $action : "login" );
@@ -26,13 +25,9 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
         $input_username = $_POST["username"];
         $input_password = $_POST["password"];
 
-        //レスポンス用のデータ配列
-        $res = array();
         //データの確認
         if(!($ds_username == $input_username) || !($ds_password == $input_password)){
-          $res["status"] = "deny";
-          print(json_encode($res));
-          exit;
+          exit_withJson_api(status_500(array("log"=>"Invalid data.")));
         }
         //認証の成功、データの格納
         $_SESSION["user_info"]["user_name"] = $input_username;
@@ -42,14 +37,9 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
         $_SESSION["m_logintime"] = time();
         $_SESSION["c_logintime"] = time();
 
-        $res["status"] = "ok";
-        $res["url"] = "/base/top";
-        print(json_encode($res));
-        exit();
+        exit_withJson_api(status_204(array("log"=>"login is successful.")));
       }else{
-        $_smarty->assign("action",$action);
-        $_smarty->display("login.tpl");
-        exit();
+        exit_withJson_api(status_500(array("log"=>"Access Denied.")));
       }
       break;
     }
@@ -57,13 +47,16 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
     case "logout":{
       session_reset();
       session_destroy();
-      print(json_encode(status_204()));
+      exit_withJson_api(status_204(array("log"=>"Logouted.")));
       exit_app();
       break;
     }
 
     case "test":{
-      print("hoge");
+      $_smarty->assign("id", "test");
+      print("<pre>");
+      print_r($_smarty->getTemplateVars("id"));
+      print("</pre>");
       exit_app();
       break;
     }
@@ -151,7 +144,7 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
 
     //エラー:該当なし
     default:
-      exit_with404_api();
+      exit_withJson_api(status_404(array("log"=>"Not Found.")));
       break;
   }
 }

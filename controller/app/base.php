@@ -87,6 +87,37 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
       break;
     }
 
+    case "test":{
+      $array = array(
+        "A10"=>array("test"=>1,"col"=>1,"A11"=>array("test"=>2,"col"=>2,"A111"=>array("test"=>3,"col"=>3),"A112"=>array("test"=>3,"col"=>3)),"A12"=>array("test"=>2,"col"=>2)),
+        "A20"=>array("test"=>1,"col"=>1),
+        "A30"=>array("test"=>1,"col"=>1,"A31"=>array("test"=>2,"col"=>2),"A32"=>array("test"=>2,"col"=>2))
+      );
+      function createtest($array){
+          $result = [];
+          foreach($array as $key => $val){
+            if(is_array($val)){
+              $result["children"][] = array($key=>createtest($val));
+            }else{
+              $result[$key] = $val;
+            }
+          }
+          return $result;
+      }
+      $result = [];
+      foreach($array as $key => $val){
+        $result[$key] = createtest($val);
+      }
+      print("<pre>");
+      print_r($result);
+      print("</pre>");
+      $_smarty->assign( "array", $result );
+      $_smarty->assign( "index", 0);
+      $_smarty->display( $action . ".tpl");
+      exit();
+      break;
+    }
+
     case "logout":{
       session_reset();
       session_destroy();
