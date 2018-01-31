@@ -114,7 +114,7 @@ function initFramework( &$_conn , &$_smarty , &$_global ){
 function processSwitch( &$_conn , &$_smarty , &$_global ){
 
   //ptypeとactionを確認する
-  $ptype = isset( $_REQUEST["ptype"] ) ? $_REQUEST["ptype"] : "api" ;
+  $ptype = isset( $_REQUEST["ptype"] ) ? $_REQUEST["ptype"] : "base" ;
   $action = isset( $_REQUEST["action"] ) ? $_REQUEST["action"] : "" ;
   $ua = $_global["UA"];
 

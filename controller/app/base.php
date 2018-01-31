@@ -2,9 +2,9 @@
 
 //アプリケーション実行関数
 function Process( $action , &$_conn , &$_smarty , &$_global ){
-
+  
   // action 指定なしのとき
-  if( empty( $action ) ) $action = "top";
+  if( empty( $action ) ) $action = "map";
   //ログイン状態の確認
   $action = ( check_login() ? $action : "login" );
 
@@ -16,8 +16,8 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
       //strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' && これやるなら、まず値がセットされているかどうかの確認が必須
       if( isset( $_POST["password"] ) && isset( $_POST["username"] ) ){
         //本来ならここでデータベースに接続して、認証の処理が必要。今は、ひとまず決めうちで記入している
-        $ds_username = "design";
-        $ds_password = "ds_master";
+        $ds_username = "drone";
+        $ds_password = "drone";
 
         //postデータを格納
         $input_username = $_POST["username"];
@@ -40,7 +40,7 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
         $_SESSION["c_logintime"] = time();
 
         $res["status"] = "ok";
-        $res["url"] = "/base/top";
+        $res["url"] = "/base/map";
         print(json_encode($res));
         exit();
       }else{
@@ -48,6 +48,12 @@ function Process( $action , &$_conn , &$_smarty , &$_global ){
         $_smarty->display("login.tpl");
         exit();
       }
+      break;
+    }
+
+    case "map": {
+      $_smarty->display( "map.tpl" );
+      exit();
       break;
     }
 

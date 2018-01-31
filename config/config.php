@@ -17,7 +17,7 @@ ini_set( "display_errors" , 1 ); error_reporting(E_ALL); // エラーを表示�
 //baseとなるトップディレクトリ
 define( "_BASE_DIRECTORY" , "/" );
 //アプリケーションのroot
-define( "_ROOT_DIR" , "/Users/hayashimizuki/www/card_system/" );
+define( "_ROOT_DIR" , "/Users/hayashimizuki/www/drone_system/" );
 //設定ファイル格納用のディレクトリ
 define( "_CONFIG_DIR" , _ROOT_DIR."config/" );
 //コントローラのディレクトリ
@@ -65,5 +65,11 @@ define( "_OUT_DB_HOST" , "10.0.1.51" );
 define( "_OUT_DB_USER" , "design" );
 define( "_OUT_DB_PASS" , "ds_master" );
 define( "_OUT_DB_NAME" , "design_studio" );
+
+//外部DBを使用するか、 するならtrue
+define( "_OUT_DB_FLAG", false);
+
+//dbタイプ mysql sqlite ...
+define( "_DB_TYPE", "mysql");
 
 ?>
