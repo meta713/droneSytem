@@ -182,7 +182,7 @@
         </div>
       </div>
       <!-- <button class="btn btn-info mb-2 connection-btn" disabled="">接続する</button> -->
-      <div class="map_area border-top mt-4 pt-4">
+      <div class="map_area border-top mt-4 pt-4 d-none">
         <div class="row no-gutters" style="background-image : url({$smarty.const._BASE_DIRECTORY}assets/image/room.jpg); background-size: 100% 100%;">
           {$x = 0}{$y = 5}
           {for $index=1 to 13}<div class="col-sm-13"><button style="padding: -0 0.75rem;" class="btn btn-block btn-outline-secondary text-center test-btn invisible btn-ajust">{$index}</btn></div>{/for}
@@ -454,6 +454,11 @@ $(function(){
         break;
       }
       case "flying": {
+
+        break;
+      }
+      case "complete": {
+        alert("complete!!");
         break;
       }
       default: {
@@ -524,7 +529,7 @@ $(function(){
         // //send処理
         var cd = mydevices.currentDevice;
         mydevices.updateDeviceStatus(Device(cd.name, cd.uuid, cd.rssi, cd.battery, true, true));
-        // ws.send(JSON.stringify({ rd : mydevices.currentDevice, flag : "flying", x : x, y : y }));
+        ws.send(JSON.stringify({ rd : mydevices.currentDevice, flag : "flying", x : x, y : y }));
       }
     });
   });

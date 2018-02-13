@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-02-10 01:38:13
+/* Smarty version 3.1.30, created on 2018-02-13 18:27:59
   from "/Users/hayashimizuki/www/drone_system/smarty/templates/map.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5a7dce75243ac6_24770116',
+  'unifunc' => 'content_5a82af9f097b97_19190103',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1fd5917b9e9d3197bf9554ab9a8ca0867b825df9' => 
     array (
       0 => '/Users/hayashimizuki/www/drone_system/smarty/templates/map.tpl',
-      1 => 1518194290,
+      1 => 1518514031,
       2 => 'file',
     ),
   ),
@@ -21,28 +21,28 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:templa.tpl' => 1,
   ),
 ),false)) {
-function content_5a7dce75243ac6_24770116 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5a82af9f097b97_19190103 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3823432195a7dce75223ed1_85322235', "template_styles");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20892041065a82af9f076d00_56103473', "template_styles");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10094663875a7dce75236df9_65583800', "template_body");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_20096442655a82af9f092014_25638779', "template_body");
 ?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_3418430265a7dce75242ef5_23243462', "template_script");
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_21202355745a82af9f0974b3_07500902', "template_script");
 ?>
 
 <?php $_smarty_tpl->inheritance->endChild();
 $_smarty_tpl->_subTemplateRender("file:templa.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 2, false);
 }
 /* {block "template_styles"} */
-class Block_3823432195a7dce75223ed1_85322235 extends Smarty_Internal_Block
+class Block_20892041065a82af9f076d00_56103473 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -83,7 +83,7 @@ assets/stylesheet/iziToast.min.css">
 }
 /* {/block "template_styles"} */
 /* {block "template_body"} */
-class Block_10094663875a7dce75236df9_65583800 extends Smarty_Internal_Block
+class Block_20096442655a82af9f092014_25638779 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -239,7 +239,7 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
         </div>
       </div>
       <!-- <button class="btn btn-info mb-2 connection-btn" disabled="">接続する</button> -->
-      <div class="map_area border-top mt-4 pt-4">
+      <div class="map_area border-top mt-4 pt-4 d-none">
         <div class="row no-gutters" style="background-image : url(<?php echo @constant('_BASE_DIRECTORY');?>
 assets/image/room.jpg); background-size: 100% 100%;">
           <?php $_smarty_tpl->_assignInScope('x', 0);
@@ -298,7 +298,7 @@ assets/image/room.jpg" width="100%" height="100%">
 }
 /* {/block "template_body"} */
 /* {block "template_script"} */
-class Block_3418430265a7dce75242ef5_23243462 extends Smarty_Internal_Block
+class Block_21202355745a82af9f0974b3_07500902 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -565,6 +565,11 @@ $(function(){
         break;
       }
       case "flying": {
+
+        break;
+      }
+      case "complete": {
+        alert("complete!!");
         break;
       }
       default: {
@@ -635,7 +640,7 @@ $(function(){
         // //send処理
         var cd = mydevices.currentDevice;
         mydevices.updateDeviceStatus(Device(cd.name, cd.uuid, cd.rssi, cd.battery, true, true));
-        // ws.send(JSON.stringify({ rd : mydevices.currentDevice, flag : "connecting" }));
+        ws.send(JSON.stringify({ rd : mydevices.currentDevice, flag : "flying", x : x, y : y }));
       }
     });
   });
